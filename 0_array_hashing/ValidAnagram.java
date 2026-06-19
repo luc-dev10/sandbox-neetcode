@@ -1,5 +1,5 @@
 /**
- * https://neetcode.io/problems/duplicate-integer/
+ * https://neetcode.io/problems/is-anagram/question?list=neetcode150
  * 
  * Given two strings s and t, return true if the two strings are anagrams of each other, otherwise return false.
  * 
