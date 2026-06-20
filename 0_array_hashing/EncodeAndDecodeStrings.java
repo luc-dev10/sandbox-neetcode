@@ -10,11 +10,30 @@
  * 
  */
 public class EncodeAndDecodeStrings {
-    public String encode(List<String> strs) {
-
+   public String encode(List<String> strs) {
+        StringBuilder sb = new StringBuilder();
+        for (String s : strs) {
+            sb.append(s.length());
+            sb.append("#");
+            sb.append(s);
+        }
+        return sb.toString();
     }
 
     public List<String> decode(String str) {
+        List<String> res = new ArrayList<>();
+        if (str.length() == 0) return res;
 
+        int l = 0;
+        while (l < str.length()) {
+            int r = l + 1;
+            while (str.charAt(r) != '#') r++;
+            int s = r + 1;
+            int e = s + Integer.parseInt(str.substring(l, r));
+            res.add(str.substring(s, e));
+            l = e;
+        }
+
+        return res;
     }
 }
