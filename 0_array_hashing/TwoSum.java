@@ -18,6 +18,13 @@
  */
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        
+        Map<Integer, Integer> hm = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int v = nums[i];
+            if (hm.containsKey(v)) return new int[] {hm.get(v),i};
+            hm.put(target - v, i);
+        }
+
+        return null;
     }
 }
