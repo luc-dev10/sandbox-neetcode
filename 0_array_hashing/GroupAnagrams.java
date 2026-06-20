@@ -14,5 +14,19 @@
 */
 public class GroupAnagrams {
     public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> hm = new HashMap<>();
+
+        for (String s : strs) {
+            int[] k = new int[26];
+            for (int i = 0; i < s.toCharArray().length; i++) {
+                k[s.charAt(i) - 'a'] += 1;
+            }
+            String ck = Arrays.toString(k);
+            List<String> v = hm.getOrDefault(ck, new ArrayList<>());
+            v.add(s);
+            hm.put(ck, v);
+        }
+
+        return new ArrayList<>(hm.values());
     }
 }
