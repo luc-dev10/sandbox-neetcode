@@ -12,6 +12,21 @@
  */
 public class LongestConsecutiveSequence {
     public int longestConsecutive(int[] nums) {
-        
+        Set<Integer> s = new HashSet<>();
+        for (int n : nums) s.add(n);
+
+        int max = nums.length > 0 ? 1 : 0;
+
+        for (int num : nums) {
+            if (s.contains(num - 1)) continue;
+            int n = num + 1;
+            int t = 1;
+            while (s.contains(n)) {
+                max = Math.max(++t, max);
+                n++;
+            }
+        }
+
+        return max;
     }
 }
