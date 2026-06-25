@@ -12,5 +12,28 @@
  * 
  */
 public class ValidPalindrome {
+    public boolean isPalindrome(String s) {
+        char[] cs = s.toCharArray();
+        int l = 0;
+        int r = cs.length - 1;
 
+        while (l < r) {
+            if (!Character.isLetterOrDigit(cs[l])) {
+                l++;
+                continue;
+            }
+
+            if (!Character.isLetterOrDigit(cs[r])) {
+                r--;
+                continue;
+            }
+
+            if (Character.toLowerCase(cs[l]) != Character.toLowerCase(cs[r])) return false;
+
+            l++;
+            r--;
+        }
+
+        return true;
+    }
 }
