@@ -10,5 +10,16 @@
  * 0 <= height[i] <= 1000
  */
 public class TrappingRainWater {
-    
+    public int trap(int[] height) {
+        int r = height.length - 1;
+        int l = 0, ml = 0, mr = 0, t = 0;
+
+        while (l < r) {
+            ml = Math.max(ml, height[l]);
+            mr = Math.max(mr, height[r]);
+            if (height[l] < height[r]) t += ml - height[l++];
+            else t += mr - height[r--];
+        }
+        return t;
+    }
 }
