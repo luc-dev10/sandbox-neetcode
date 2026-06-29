@@ -17,5 +17,34 @@
  */
 
 public class SearchATwoDMatrix {
-    
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int t = 0;
+        int b = matrix.length - 1;
+        int l = 0;
+        int r = matrix[0].length - 1;
+        int row = -1;
+
+        while (t <= b) {
+            int m = (b - t) / 2 + t;
+            if (matrix[m][0] > target) {
+                b = m - 1;
+            } else if (matrix[m][r] < target) {
+                t = m + 1;
+            } else {
+                row = m;
+                break;
+            }
+        }
+
+        if (row == -1) return false;
+
+        while (l <= r) {
+            int m = (r - l) / 2 + l;
+            if (matrix[row][m] == target) return true;
+            else if (matrix[row][m] < target) l = m + 1;
+            else r = m - 1;
+        }
+
+        return false;
+    }
 }
