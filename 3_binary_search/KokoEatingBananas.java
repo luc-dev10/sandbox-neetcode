@@ -12,5 +12,28 @@
  * 
  */
 public class KokoEatingBananas {
-    
+    public int minEatingSpeed(int[] piles, int h) {
+        int l = 1;
+        int r = 0;
+        for (int p : piles) if (p > r) r = p;
+        int k = r;
+
+        while (l <= r) {
+            int m = (r - l) / 2 + l;
+            int time = 0;
+            for (int p : piles) {
+                time += p / m;
+                if (p % m != 0) time++;
+            }
+
+            if (time <= h) {
+                r = m - 1;
+                k = Math.min(k, m);
+            } else {
+                l = m + 1;
+            }
+        }
+
+        return k;
+    }
 }
